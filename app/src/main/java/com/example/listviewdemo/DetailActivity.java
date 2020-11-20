@@ -21,23 +21,31 @@ import com.example.listviewdemo.repo.Repo;
 
 import java.io.InputStream;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements Updatable {
 
     private Note currentNote;
     Bitmap currentBitmap;
     ImageView myDetailImageView;
+    private MyAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        myDetailImageView = findViewById(R.id.noteImage);
+
         TextView myDetailTextView = findViewById(R.id.myDetailTextView);
         currentNote = (Note) Global.map.get(Global.NOTE_KEY);
         myDetailTextView.setText(currentNote.getTitle());
+        //myDetailImageView.(currentNote.getImage());
+        Repo.r().downloadBitmap("coolcar2.jpg", this);
+
+
 
     }
 
+    // Update Note metode
     public void addUpdatedNote(View view){
         TextView myDetailTextView = findViewById(R.id.myDetailTextView);
         EditText newDetailText = findViewById(R.id.newText);
@@ -68,7 +76,6 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-
     private void backFromGallery(@Nullable Intent data) {
         Uri uri = data.getData();
         try {
@@ -79,6 +86,7 @@ public class DetailActivity extends AppCompatActivity {
         }catch (Exception e){
 
         }
+
     }
 
     private void backFromCamera(@Nullable Intent data) {
@@ -93,6 +101,29 @@ public class DetailActivity extends AppCompatActivity {
     public void cameraBtnPressed(View view){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 2);
+    }
+
+    public void uploadImage(View view) {
+        Note note = new Note("My friday note: Chill!");
+        Repo.r().uploadBitmap(note, currentBitmap);
+    }
+
+    @Override
+    public void update(Object o) {
+        System.out.println("Update() kaldet!!!");
+        // kald på adapters notidyDatasetChange()
+        runOnUiThread(() -> {
+            myAdapter.notifyDataSetChanged();
+            if(o != null) {
+                Bitmap bitmap = (Bitmap)o; // fungerer denne casting
+                if(bitmap != null) {
+                    myDetailImageView.setImageBitmap(bitmap);
+                }
+            }
+            else{
+                System.out.println("No Image found");
+            }
+        });
     }
 
 }

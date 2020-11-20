@@ -5,6 +5,7 @@ import java.util.UUID;
 public class Note {
 
     private String title;
+    private String image;
     private String id = UUID.randomUUID().toString(); // default
 
     public Note(String title, String _id) {
@@ -28,5 +29,13 @@ public class Note {
 
     public String getId() {
         return id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

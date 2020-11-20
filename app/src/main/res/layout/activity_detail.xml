@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/myDetailTextView"
-        android:layout_width="287dp"
-        android:layout_height="234dp"
+        android:layout_width="285dp"
+        android:layout_height="57dp"
         android:layout_marginStart="62dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="62dp"
@@ -35,7 +35,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myDetailTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/updateNewText"
@@ -51,4 +51,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newText" />
+
+    <Button
+        android:id="@+id/myGalleryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="90dp"
+        android:onClick="galleryBtnPressed"
+        android:text="Gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/updateNewText"
+        app:layout_constraintTop_toBottomOf="@+id/newText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/myUpdloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="uploadImage"
+        android:text="Upload"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/updateNewText"
+        app:layout_constraintTop_toBottomOf="@+id/myGalleryButton" />
+
+    <ImageView
+        android:id="@+id/noteImage"
+        android:layout_width="264dp"
+        android:layout_height="213dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="21dp"
+        app:layout_constraintBottom_toTopOf="@+id/newText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myDetailTextView"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,55 +42,24 @@
         android:layout_marginBottom="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addNoteButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myListView2"
+        app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/myGalleryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="110dp"
-        android:onClick="galleryBtnPressed"
-        android:text="Gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addNoteButton"
-        app:layout_constraintTop_toBottomOf="@+id/myListView2" />
 
     <Button
         android:id="@+id/myCameraButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="18dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="80dp"
         android:onClick="cameraBtnPressed"
         android:text="Camera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/addNoteButton"
-        app:layout_constraintTop_toBottomOf="@+id/myGalleryButton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/myUpdloadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="19dp"
-        android:onClick="uploadImage"
-        android:text="Upload"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/myCameraButton"
-        app:layout_constraintStart_toEndOf="@+id/myImageView10"
-        app:layout_constraintTop_toBottomOf="@+id/addNoteButton" />
+        app:layout_constraintStart_toEndOf="@+id/addNoteButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

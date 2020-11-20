@@ -22,14 +22,14 @@ import java.io.InputStream;
 public class CustomListActivity extends AppCompatActivity implements Updatable{
 
     private MyAdapter myAdapter;
-    ImageView myImageView10;
+    ImageView myImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_list);
 
-        myImageView10 = findViewById(R.id.myImageView10);
+        myImageView = findViewById(R.id.myImageView10);
 
         String[] countries = {"USA", "Denmark", "Norway", "Iceland"};
         // vi skal have et array med billeder:
@@ -46,14 +46,15 @@ public class CustomListActivity extends AppCompatActivity implements Updatable{
             Global.map.put(Global.NOTE_KEY, Repo.r().getNoteList().get((int)arrPos));
              // gemmer text i untent objektet og kan hentes på et andet view
             startActivity(intent);
+            Repo.r().downloadBitmap("coolcar2.jpg", this);
         });
 
         Repo.r().setActivity(this);
-        Repo.r().downloadBitmap("coolcar2.jpg", this);
+
 
     }
 
-    public void galleryBtnPressed(View view){
+    /*public void galleryBtnPressed(View view){
         Intent intent = new Intent(Intent.ACTION_PICK); // make an implicit intent, which will allow
         // the user to choose among different services to accomplish this task.
         intent.setType("image/*"); // we need to set the type of content to pick
@@ -80,7 +81,7 @@ public class CustomListActivity extends AppCompatActivity implements Updatable{
         try {
             InputStream is = getContentResolver().openInputStream(uri);
             currentBitmap = BitmapFactory.decodeStream(is);
-            myImageView10.setImageBitmap(currentBitmap);
+            myImageView.setImageBitmap(currentBitmap);
 
         }catch (Exception e){
 
@@ -90,7 +91,7 @@ public class CustomListActivity extends AppCompatActivity implements Updatable{
     private void backFromCamera(@Nullable Intent data) {
         try {
             Bitmap currentBitmap = (Bitmap)data.getExtras().get("data");
-            myImageView10.setImageBitmap(currentBitmap);
+            myImageView.setImageBitmap(currentBitmap);
             // skaf en id til dit billede. F.eks. id fra noten
         }catch (Exception e){
 
@@ -102,17 +103,26 @@ public class CustomListActivity extends AppCompatActivity implements Updatable{
         startActivityForResult(intent, 2);
     }
 
+    */
     @Override
     public void update(Object o) {
         System.out.println("Update() kaldet!!!");
         // kald på adapters notidyDatasetChange()
         runOnUiThread(() -> {
             myAdapter.notifyDataSetChanged();
+
             if(o != null) {
                 Bitmap bitmap = (Bitmap)o; // fungerer denne casting
                 if(bitmap != null) {
-                    myImageView10.setImageBitmap(bitmap);
+                    myImageView.setImageBitmap(bitmap);
                 }
+                else{
+                    System.out.println("No image!!!");
+                }
+
+            }
+            else{
+                System.out.println("No image!!!");
             }
         });
     }
@@ -122,10 +132,10 @@ public class CustomListActivity extends AppCompatActivity implements Updatable{
         Repo.r().addNote(note); // Opretter ny Nye + gemmer i Firebase
     }
 
-    public void uploadImage(View view) {
+    /*public void uploadImage(View view) {
         Note note = new Note("My friday note: Chill!");
         Repo.r().uploadBitmap(note, currentBitmap);
-    }
+    }*/
 
 
 }
